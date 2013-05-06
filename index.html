@@ -22,10 +22,39 @@
         <section data-role="page" id="page2">
             <header data-role="header">
                 <h1>Page 2</h1>
+                <a href="#page1">back</a>
+                <a href="#page3">next</a>
             </header>
-            <div data-role="content">
-                this is more content
-            </div>
+            <article data-role="content">
+                <ul data-role="listview" data-filter="true">
+                    <li>
+                        <a href="#page1">back</a>
+                    </li>
+                    <li>
+                        item 2
+                    </li>
+                </ul>
+            </article>
+            <footer data-role="footer" data-position="fixed">
+                <nav data-role="navbar">
+                    <ul>
+                        <li><a href="#page1">one</a></li>
+                        <li><a href="#page2">twi</a></li>
+                        <li><a href="#page3">three</a></li>
+                    </ul>
+                </nav>
+            </footer>
+        </section>
+
+
+        <section data-role="page" id="page3">
+            <header data-role="header">
+                <h1>Page 3</h1>
+                <a href="#page2">back</a>
+            </header>
+            <article data-role="content">
+                bla.
+            </article>
         </section>
 
     </body>
