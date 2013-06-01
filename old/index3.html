@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My first app</title>
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.css" />
+        <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.js"></script>
+        <script>
+            window.onload=function()
+            {
+                document.addEventListener("deviceready", onDeviceReady, false);
+            }
+
+            function onDeviceReady()
+            {
+                var names = new Array();
+                names[0] = "Hans Meier";
+                names[1] = "Hans Pter";
+                names[2] = "Hans muelles";
+                names[3] = "Hans schubert";
+            }
+        </script>
+    </head>
+    <body>
+        <section data-role="page" id="page1">
+            <header data-role="header">
+                <h1>Page 1</h1>
+            </header>
+            <div data-role="content">
+                this is my contnet. <br />
+                link to page 2, <a href="#page2">click here</a>
+            </div>
+            <footer data-role="footer">
+                <h1> this iy my footer</h1>
+            </footer>
+        </section>
+        <section data-role="page" id="page2">
+            <header data-role="header">
+                <h1>Page 2</h1>
+                <a href="#page1">back</a>
+                <a href="#page3">next</a>
+            </header>
+            <article data-role="content">
+                <ul data-role="listview" data-filter="true" id="list">
+                    <li>
+                        <a href="#page1">back</a>
+                    </li>
+                    <li>
+                        item 2
+                    </li>
+                </ul>
+            </article>
+            <footer data-role="footer" data-position="fixed">
+                <nav data-role="navbar">
+                    <ul>
+                        <li><a href="#page1">one</a></li>
+                        <li><a href="#page2">twi</a></li>
+                        <li><a href="#page3">three</a></li>
+                    </ul>
+                </nav>
+            </footer>
+        </section>
+
+
+        <section data-role="page" id="page3">
+            <header data-role="header">
+                <h1>Page 3</h1>
+                <a href="#page2">back</a>
+            </header>
+            <article data-role="content">
+                bla.
+            </article>
+        </section>
+
+    </body>
+</html>
