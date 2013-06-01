@@ -1,228 +1,76 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
-    <link href="styles/kendo.common.min.css" rel="stylesheet" />
-    <link href="styles/kendo.default.min.css" rel="stylesheet" />
-    <link href="styles/kendo.mobile.all.min.css" rel="stylesheet" />
-    <link href="kendo.css" rel="stylesheet" />
-    <script src="js/jquery.min.js"></script>
-    <script src="js/kendo.all.min.js"></script>
+    <title>BuzzLight</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.css" />
+    <link rel="stylesheet" href="css/main.css">
+    <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.js"></script>
+    <script type="text/javascript" src="js/google-spreadsheet.js"></script>
+        <!--<script type="text/javascript" src="cordova-2.7.0.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+    </script>-->
+    <script type="text/javascript">
+        function doLogin() {
+            var userid = document.getElementById("user_id").value;
+            
+            //all of this crap below does not work..
+            /*var urlLocation = '0Ago31JQPZxZrdHF2bWNjcTJFLXJ6UUM5SldEakdEaX'; //Put the Spreadsheet location here
+            var url = 'https://spreadsheets.google.com/pub?key=0Ago31JQPZxZrdHF2bWNjcTJFLXJ6UUM5SldEakdEaXc&hl=en';
+            $.get(url, function(data) {
+              console.log(data);
+            });*/
+             /*localStorage.clear();
+              var url = "https://docs.google.com/spreadsheet/ccc?key=0AsCPeWnD_GbAdHFmbGtNWEJqVWdVb21ZRFUxMndtYUE";
+              
+              //https://spreadsheets.google.com/pub?key=0Ago31JQPZxZrdHF2bWNjcTJFLXJ6UUM5SldEakdEaXc&hl=en&output=html
+
+              //var url_parameter = document.location.search.split(/\?url=/)[1]
+              //var url = url_parameter || sample_url;
+              var googleSpreadsheet = new GoogleSpreadsheet();
+              googleSpreadsheet.url(url);
+              googleSpreadsheet.load(function(result) {
+                alert(JSON.stringify(result));
+                //$('#results').html(JSON.stringify(result).replace(/,/g,",\n"));
+              });*/
+        }
+    </script>
 </head>
 <body>
-
-<div data-role="view" data-layout="overview-layout" id="overview-cities" data-title="Favourite Cities">
-    <ul data-role="listview" data-style="inset" data-type="group">
-        <li>
-            Africa
-            <ul>
-                <li><h2>Nairobi</h2><img src="content/mobile/overview/nairobi.jpg" /></li>
-            </ul>
-        </li>
-        <li>
-            America
-            <ul>
-                <li><h2>Boston</h2><img src="content/mobile/overview/boston.jpg" /></li>
-                <li><h2>Ottawa</h2><img src="content/mobile/overview/ottawa.jpg" /></li>
-                <li><h2>San Francisco</h2><img src="content/mobile/overview/san-francisco.jpg" /></li>
-            </ul>
-        </li>
-        <li>
-            Asia
-            <ul>
-                <li><h2>Bombay</h2><img src="content/mobile/overview/bombay.jpg" /></li>
-            </ul>
-        </li>
-        <li>
-            Australia
-            <ul>
-                <li><h2>Melbourne</h2><img src="content/mobile/overview/melbourne.jpg" /></li>
-                <li><h2>Sydney</h2><img src="content/mobile/overview/sydney.jpg" /></li>
-            </ul>
-        </li>
-        <li>
-            Europe
-            <ul>
-                <li><h2>Cannes</h2><img src="content/mobile/overview/cannes.jpg" /></li>
-                <li><h2>Liverpool</h2><img src="content/mobile/overview/liverpool.jpg" /></li>
-                <li><h2>London</h2><img src="content/mobile/overview/london.jpg" /></li>
-            </ul>
-        </li>
-    </ul>
-</div>
-
-<div data-role="view" data-layout="overview-layout" id="overview-gallery" data-title="Photo Gallery">
-    <div id="scrollview-container">
-        <div data-role="scrollview">
-            <div class="photo photo1"></div>
-
-            <div class="photo photo2"></div>
-
-            <div class="photo photo3"></div>
-
-            <div class="photo photo4"></div>
-
-            <div class="photo photo5"></div>
-
-            <div class="photo photo6"></div>
-
-            <div class="photo photo7"></div>
-
-            <div class="photo photo8"></div>
-
-            <div class="photo photo9"></div>
-
-            <div class="photo photo10"></div>
+    <!-- LOGIN PAGE -->
+    <div data-role="page" id="login" data-title="Hello">
+        <div data-role="content">
+            <h1>Hello.</h1>
+            <p class="centered"><img src="img/logo.png" width="120px" alt="buzzlight-logo"/></p>
+            <h2>What is your Netlight username?</h2>
+            
+            <form name="input">
+                <input type="text" id="user_id" placeholder="e.g. inho" />
+                <input type="button" value="Go" onClick="doLogin()">
+            </form>
+        
+            <a href="#profile">next</a>
         </div>
-    </div>
-</div>
+    </div>      
 
-<div data-role="view" data-layout="overview-layout" id="overview-contacts" data-title="My Contacts">
-    <ul data-role="listview" data-type="group">
-        <li>
-            A
-            <ul>
-                <li><h2>Ann Devon</h2><img src="../../content/mobile/overview/ann.jpg" /></li>
-                <li><h2>Annette Roulet</h2><img src="../../content/mobile/overview/annette.jpg" /></li>
-                <li><h2>Antonio Moreno</h2><img src="../../content/mobile/overview/antonio.jpg" /></li>
+    <!-- PROFILE PAGE -->
+    <div data-role="page" id="profile" data-title="Your Profile">
+        <div data-role="content">
+            <h1>Please refine your profile.</h1>
+            <ul id="horizontal-list">
+                <li><img src="img/logo.png" width="60px" alt="buzzlight-logo"/></li>
+                <li>Martin Hommer</li>
             </ul>
-        </li>
-        <li>
-            C
-            <ul>
-                <li><h2>Carine Schmitt</h2><img src="../../content/mobile/overview/carine.jpg" /></li>
-                <li><h2>Catherine Dewey</h2><img src="../../content/mobile/overview/catherine.jpg" /></li>
-            </ul>
-        </li>
-        <li>
-            D
-            <ul>
-                <li><h2>Daniel Tonini</h2><img src="../../content/mobile/overview/daniel.jpg" /></li>
-                <li><h2>Diego Roel</h2><img src="../../content/mobile/overview/diego.jpg" /></li>
-            </ul>
-        </li>
-        <li>
-            E
-            <ul>
-                <li><h2>Eduardo Saavedra</h2><img src="../../content/mobile/overview/eduardo.jpg" /></li>
-                <li><h2>Elizabeth Brown</h2><img src="../../content/mobile/overview/elizabeth.jpg" /></li>
-            </ul>
-        </li>
-        <li>
-            F
-            <ul>
-                <li><h2>Felipe Izquierdo</h2><img src="../../content/mobile/overview/felipe.jpg" /></li>
-                <li><h2>Fran Wilson</h2><img src="../../content/mobile/overview/fran.jpg" /></li>
-                <li><h2>Francisco Chang</h2><img src="../../content/mobile/overview/francisco.jpg" /></li>
-            </ul>
-        </li>
-        <li>
-            M
-            <ul>
-                <li><h2>Max Born</h2><img src="../../content/mobile/overview/felipe.jpg" /></li>
-            </ul>
-        </li>
-    </ul>
-</div>
-
-<div data-role="view" data-layout="overview-layout" data-init="mobileAccountViewInit" id="overview-account" data-title="Account Settings">
-    <ul id="settings-view" data-index="0">
-        <li>
-            Profile
-        </li>
-        <li>
-            General
-        </li>
-        <li>
-            Group
-        </li>
-    </ul>
-    <ul data-role="listview" data-style="inset" data-type="group">
-        <li>
-            Profile
-            <ul>
-                <li><h2>Christina <span>Berglund</span></h2><img src="../../content/mobile/overview/christina.jpg" /></li>
-                <li>Username <span class="value">christina</span></li>
-                <li>Email <span class="value">clientservice at kendoui.com</span></li>
-            </ul>
-        </li>
-        <li>
-            Languages
-            <ul>
-                <li>English <span class="value">Native</span></li>
-                <li>French<span class="value">Advanced</span></li>
-            </ul>
-        </li>
-        <li>
-            PC Skills
-            <ul>
-                <li>MS Word</li>
-                <li>MS Excel</li>
-                <li>MS Outlook</li>
-                <li>MS PowerPoint</li>
-                <li>Windows (XP, Vista)</li>
-                <li>Internet</li>
-            </ul>
-        </li>
-    </ul>
-    <ul data-role="listview" data-style="inset" data-type="group" style="display:none">
-        <li>
-            General Settings
-            <ul>
-                <li>Notifications <input type="checkbox" data-role="switch" checked></li>
-                <li>Local Services <input type="checkbox" data-role="switch"></li>
-                <li><a>About</a></li>
-            </ul>
-        </li>
-    </ul>
-    <ul data-role="listview" data-style="inset" data-type="group" style="display:none">
-        <li>
-            Group
-            <ul>
-                <li><a>Your Group Name</a></li>
-                <li><a>Group Email</a></li>
-            </ul>
-        </li>
-    </ul>
-</div>
-
-<div data-role="layout" data-id="overview-layout">
-    <header data-role="header">
-        <div data-role="navbar">
-            <!--a class="nav-button" data-align="left" data-role="backbutton">Back</a-->
-            <span data-role="view-title">My Contacts</span>
-            <a data-align="right" data-role="button" class="nav-button" href="#index">Index</a>
+            <form name="input" action="" method="post">
+                <input type="email" id="email" placeholder="e.g. first.last@netlight.com">
+                <input type="tel" id="phone" placeholder="e.g. +4915211112222">
+                <input type="button" value="Save" onClick="">
+            </form>
         </div>
-    </header>
+    </div>   
 
-    <footer data-role="footer">
-        <div data-role="tabstrip">
-            <a data-icon="globe" href="#overview-cities">Cities
-            </a><a data-icon="organize" href="#overview-gallery">Gallery
-        </a><a data-icon="contacts" href="#overview-contacts">Contacts
-        </a><a data-icon="settings" href="#overview-account">My Account</a>
-        </div>
-    </footer>
-</div>
-
-<script>
-    function mobileAccountViewInit() {
-        var listviews = this.element.find("ul.km-listview");
-
-        $("#settings-view").kendoMobileButtonGroup({
-            select: function() {
-                listviews.hide()
-                        .eq(this.selectedIndex)
-                        .show();
-            },
-            index: 0
-        });
-    }
-</script>
-
-
-<script>
-    var app = new kendo.mobile.Application(document.body);
-</script>
 </body>
 </html>
