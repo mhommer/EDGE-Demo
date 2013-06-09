@@ -45,5 +45,33 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
+
+
     }
 };
+
+var getToken = function ()  {
+
+    var tokenCapture = function () {
+         var url = this.document.location.href;
+         var splits = url.split('&');
+    };
+
+    $(document).ready(tokenCapture);
+
+    var url = 'https://accounts.google.com/o/oauth2/auth?' +
+        'client_id=399944064628-3ie91ujnnklvfeeccco88j8rul89rcn9.apps.googleusercontent.com&' +
+        'redirect_uri=http://localhost&' +
+        'scope=https://www.googleapis.com/auth/fusiontables&' +
+        'response_type=token&' +
+        'approval_prompt=force&' +
+        'login_hint=buzzlight.netlight@gmail.com';
+
+        //this.document.location.href = url;
+
+
+
+}() ;
+
+
+
