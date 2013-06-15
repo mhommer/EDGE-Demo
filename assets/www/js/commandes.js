@@ -144,34 +144,37 @@
 	function findUserByUsername() {	
 		var username =  $('input[id=formUsername]').val();
 		liquid.helper.oauth.getAccessToken(function(tokenObj) {
-       	 	token = tokenObj.access_token;
+       	 	var token = tokenObj.access_token;
+       	 	//var token = "ya29.AHES6ZSgtDwDTr8EDsjxdodZahcMHOydP5YYsazkuQiZv1rQacbf1Q";
 			if(username!=null && username!=""){
 			meName = username;
 			//url: https://www.googleapis.com/fusiontables/v1/query?access_token=ya29.AHES6ZQzTtccqZvnY7djg3UxO7tXal3cOPm9sFElX3ZNc54B_vcpYo4&sql=SELECT%20*%20FROM%201ir_IZ0sBCLkCM5HxrJm3rRPWMSF09wNwnNb0YEM
+			//var json = "https://www.googleapis.com/fusiontables/v1/query?key=AIzaSyBE9qhxQaFUxLpRsKl55RZ3GDPM60eXoDo&sql=SELECT%20*%20from%201E7zxhrFUQhqJA0AKdAxn2BTQ-xlUj7EBYasLw4o&typed=false";
 			//var json = "https://www.googleapis.com/fusiontables/v1/query?key=AIzaSyBE9qhxQaFUxLpRsKl55RZ3GDPM60eXoDo&sql=SELECT%20*%20from%201E7zxhrFUQhqJA0AKdAxn2BTQ-xlUj7EBYasLw4o WHERE username='"+username+"'&typed=false";
-			var json = "https://www.googleapis.com/fusiontables/v1/query?access_token="+token+"&sql=SELECT%20*%20FROM%201gfLO_zBIjASkgSrbII5weJwERVvFcSoNwe2Hk2w";
+			var json = "https://www.googleapis.com/fusiontables/v1/query?access_token="+token+"&sql=SELECT%20*%20from%201gfLO_zBIjASkgSrbII5weJwERVvFcSoNwe2Hk2w WHERE id='"+username+"'&typed=false";
+			//var json = "https://www.googleapis.com/fusiontables/v1/query?access_token="+token+"&sql=SELECT%20*%20FROM%201gfLO_zBIjASkgSrbII5weJwERVvFcSoNwe2Hk2w";
 			//var json = "https://www.googleapis.com/fusiontables/v1/tables/1gfLO_zBIjASkgSrbII5weJwERVvFcSoNwe2Hk2w?access_token="+token;
 			alert("url is " + json);
 			console.error("url:" + json);
 			
-		    $.getJSON(json, function(data) {
-		    	console.error("response");
-		    	alert("erg" + data.rows[0][1]);
-		    	/*
-				if(data!=null && data.rows!=undefined){
-				$('.username_li').empty().append(data.rows[0][1]+', Please refine your profile');
-				me = data.rows[0][0];
+		    $.getJSON(json).done(function( data ) {
+  				console.error("found");
+		    	console.error("data: "+ data.rows[0][1]);
+		    	if(data!=null && data.rows!=undefined){
+						$('.username_li').empty().append(data.rows[0][1]+', Please refine your profile');
+					me = data.rows[0][0];
 				} else {
-				$('.username_li').empty().append(username+', Please register');
-				}*/
-			}).fail(function( jqxhr, textStatus, error ) {
+					$('.username_li').empty().append(username+', Please register');
+				}
+  				});
+			/*fail(function( jqxhr, textStatus, error ) {
   					var err = textStatus + ', ' + error;
   					console.error("Request Failed: " + err);
   				})
 			.success(function( ) {
   					console.error("success");
   				});	
-
+*/
 			setTimeout(function(){
 				displayEvents(me);
 				window.location = 'index.html#profile';
