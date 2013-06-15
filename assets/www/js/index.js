@@ -44,6 +44,7 @@ function authorizeWindowChange(uriLocation) {
 	// oAuth process is successful!	
     if (oAuth.requestStatus == oAuth.status.SUCCESS) {
         var authCode = oAuth.authCode;
+        console.error("OAUTH SUCCESS - token " + authCode);
 
         // have the authCode, now save the refreshToken and start Page TaskList
         oAuth.saveRefreshToken({ 
@@ -55,7 +56,7 @@ function authorizeWindowChange(uriLocation) {
     } 
     else if (oAuth.requestStatus == oAuth.status.ERROR) 
     {
-    	console.log("ERROR - status received = oAuth.status.ERROR");
+    	console.error("ERROR - status received = oAuth.status.ERROR");
     } 
     else {
         // do nothing, since user can be visiting different urls

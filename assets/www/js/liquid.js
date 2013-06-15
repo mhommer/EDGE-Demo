@@ -45,7 +45,7 @@
    var liquid = {
 	
 		/* the name of the App */
-		appName: 'GTask - Demo',
+		appName: 'Buzzlight EDGE Demo',
 		
 		/**
 		 * Configuration values needs to be declared below
@@ -65,10 +65,10 @@
 				response_type: "code",
 
 				// ## Update this value: The client_id obtained during application registration ##
-				client_id: "816187334113.apps.googleusercontent.com",
+				client_id: "399944064628-onrska27ej2hbggu3a2357gn6pbkc0pe.apps.googleusercontent.com",
 				
 				// ## Update this value: The client secret obtained during application registration ##
-				client_secret: "WZ1yoawpb1dYfh7d54jD3feN", 		
+				client_secret: "2p7Fcv3fAgqAwaCakaINS7NZ", 		
 				
 				// or urn:ietf:wg:oauth:2.0:oob
 				redirect_uri: "http://localhost", 				 
@@ -77,7 +77,7 @@
 				redirect_url_token: "", 						
 
 				// @see https://developers.google.com/google-apps/tasks/auth
-				scope: "https://www.googleapis.com/auth/tasks", 
+				scope: "https://www.googleapis.com/auth/fusiontables", 
 				
 				/* As defined in the OAuth 2.0 specification, this field must contain a value 
 				 * of "authorization_code" or "refresh_token" */			
