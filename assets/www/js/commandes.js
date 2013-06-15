@@ -86,7 +86,7 @@
 
 	}
 	
-	function joinEvent(eventID, userId) {	
+	function joinEvent(eventID) {	
 		console.error("join event");// with: " + what + where + when + userId);
 		liquid.helper.oauth.getAccessToken(function(tokenObj) {
        	 	var token = tokenObj.access_token;
@@ -103,7 +103,7 @@
 		    		console.error("success");
 					var rowid = data.rows[0][0];
 					var attendees = data.rows[0][1];
-					attendees_new = attendees + "|" + userId;
+					attendees_new = attendees + "|" + me;
 		    		var json2 = "https://www.googleapis.com/fusiontables/v1/query?access_token="+token+"&sql=UPDATE%201ir_IZ0sBCLkCM5HxrJm3rRPWMSF09wNwnNb0YEM%20SET%20attendees='"+attendees_new+"'%20WHERE%20ROWID='"+rowid+"'";
 					console.error("url:" + json2);
 
@@ -276,10 +276,14 @@
 				$('.event_detail').append(buildWhoJoined(evt[3]));
 				
 				if (evt[3].indexOf(me) === -1){
-					$('.add_join_button').empty().append('<form id="joiningEvent"><input type="button" name="eventToJoin" onClick="javascript:joinEvent('+eventParameterID+','+me+');" value="Join Event"></div></form>'); 
+					//$('.add_join_button').empty().append('<form id="joiningEvent"><input type="button" name="eventToJoin" onClick="javascript:joinEvent('+eventParameterID+','+me+');" value="Join Event"></div></form>'); 
+					$('.add_join_button').empty().append('<form id="joiningEvent"><div data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-icon="" data-iconpos="" data-theme="c" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-up-c" aria-disabled="false"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Join Event</span></span><input class="ui-btn-hidden" type="button" name="eventToJoin" onClick="javascript:joinEvent('+eventParameterID+')" value="Join Event"></div></form>'); 
+					
+				} else if (evt[4].indexOf(me) === -1) {
+					$('.add_join_button').empty().append('<h3 class="centered">You joined this event<h3>'); 
 				} else {
-					$('.add_join_button').empty().append('<form id="joiningEvent"><input type="button" name="eventToJoin" onClick="" value="Joined"></div></form>'); 
-				} 
+					$('.add_join_button').empty().append('<h3 class="centered">You created this event<h3>'); 
+				}
 			
 				/*$('.goto_all_events').empty().append('<form id="seeAllEvents"><div data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-icon="" data-iconpos="" data-theme="c" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-up-c" aria-disabled="false"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">All Events</span></span><input class="ui-btn-hidden" type="button" name="allevents" onClick="javascript:window.location = \'index.html#main\';" value="See All Events"></div></form>'); 
 				$('#seeAllEvents') 
@@ -308,7 +312,7 @@
 				}
 
 				if(me!=null && me!=""){			
-					$('.thank_you_event').append('<form id="joiningEvent"><div data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-icon="" data-iconpos="" data-theme="c" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-up-c" aria-disabled="false"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Join Event</span></span><input class="ui-btn-hidden" type="button" name="eventToJoin" onClick="javascript:joinEvent('+eventParameterID+','+me+')" value="Join Event"></div></form>'); 
+					$('.thank_you_event').append('<form id="joiningEvent"><div data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-icon="" data-iconpos="" data-theme="c" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-up-c" aria-disabled="false"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Join Event</span></span><input class="ui-btn-hidden" type="button" name="eventToJoin" onClick="javascript:joinEvent('+eventParameterID+')" value="Join Event"></div></form>'); 
 					$('#joiningEvent') 
 					.attr("action","") .attr("method","post");
 				}

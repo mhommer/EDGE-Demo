@@ -85,12 +85,13 @@
         <!-- MAIN PAGE -->
         <div data-role="page" id="main" data-title="BuzzLight" >
               <div data-role="header">
-                <a href="javascript:gotoProfile()" data-icon="plus">Back</a>
-                <h1>Buzz'Light Events</h1>
+                <a href="javascript:gotoProfile()" data-icon="plus">Profile</a>
+                <h1>All Events</h1>
                 <a href="javascript:gotoNewEvent()" data-icon="plus">New</a>
             </div>
             <div data-role="content">
-                <h1 class="stitched_title">Buzz'Light Events</h1>
+                <!--<h1 class="stitched_title">Buzz'Light Events</h1>-->
+                <div class="centered"><img src="img/logo.png" width="80px" alt="buzzlight-logo"/></div>
                 <div id="events_tab">
                     <div class="tabs">
                         <div class="wrapper" data-role="button"></div>
@@ -141,7 +142,7 @@
                     <input type="text" id="eventTitle" placeholder="e.g. An Evening @ Biergarten">
                     <input type="date" id="eventDate" placeholder="e.g. 07/01/2013">
                     <input type="text" id="eventLocation" placeholder="e.g. Hackerbrucke">
-                    <input type="button" value="Save Your Awesome Event" onClick="javascript:PopulateNewEvent(1)">
+                    <input type="button" value="Save Your Event" onClick="javascript:createNewEvent()">
                 </form>
             </div>
         </div> 
