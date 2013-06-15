@@ -185,12 +185,7 @@
        	 	var token = tokenObj.access_token;
 			if(username!=null && username!=""){
 			meName = username;
-			//url: https://www.googleapis.com/fusiontables/v1/query?access_token=ya29.AHES6ZQzTtccqZvnY7djg3UxO7tXal3cOPm9sFElX3ZNc54B_vcpYo4&sql=SELECT%20*%20FROM%201ir_IZ0sBCLkCM5HxrJm3rRPWMSF09wNwnNb0YEM
-			//var json = "https://www.googleapis.com/fusiontables/v1/query?key=AIzaSyBE9qhxQaFUxLpRsKl55RZ3GDPM60eXoDo&sql=SELECT%20*%20from%201E7zxhrFUQhqJA0AKdAxn2BTQ-xlUj7EBYasLw4o&typed=false";
-			//var json = "https://www.googleapis.com/fusiontables/v1/query?key=AIzaSyBE9qhxQaFUxLpRsKl55RZ3GDPM60eXoDo&sql=SELECT%20*%20from%201E7zxhrFUQhqJA0AKdAxn2BTQ-xlUj7EBYasLw4o WHERE username='"+username+"'&typed=false";
 			var json = "https://www.googleapis.com/fusiontables/v1/query?access_token="+token+"&sql=SELECT%20*%20from%201gfLO_zBIjASkgSrbII5weJwERVvFcSoNwe2Hk2w WHERE id='"+username+"'&typed=false";
-			//var json = "https://www.googleapis.com/fusiontables/v1/query?access_token="+token+"&sql=SELECT%20*%20FROM%201gfLO_zBIjASkgSrbII5weJwERVvFcSoNwe2Hk2w";
-			//var json = "https://www.googleapis.com/fusiontables/v1/tables/1gfLO_zBIjASkgSrbII5weJwERVvFcSoNwe2Hk2w?access_token="+token;
 			console.error("url:" + json);
 			
 		    $.getJSON(json).done(function( data ) {
@@ -203,15 +198,18 @@
 					$('#prof_phone').val(data.rows[0][4]);
 					$('.username_li').empty().append(data.rows[0][1]+', Please refine your profile');
 					me = data.rows[0][0];
+					window.location = 'index.html#profile';
 				} else {
 		    		console.error("user "+username+" not found");
 					$('.username_li').empty().append('Sorry ' + username+', we can\'t find you in the system');
+					alert('Sorry ' + username+', we can\'t find you in the system');
 				}
 				
-				window.location = 'index.html#profile';
+				
 
   				}).fail(function() {
   					console.error("reuest failed");
+  					alert('Sorry ' + username+', we can\'t find you in the system');
   				});
 			/*setTimeout(function(){
 				displayEvents(me);
