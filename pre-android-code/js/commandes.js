@@ -1,8 +1,12 @@
 	var me;
 	var meName;
 	
-	$(document).ready(function () {
+	$(document).ready(function() {
+		initUI();
+	});
 
+	function initUI() {
+		alert("bla");
 		$('.wrapper').css({left:$('span.item:first').position()['left']});
 		
 		$('.item').mouseover(function () {
