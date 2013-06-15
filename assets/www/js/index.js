@@ -12,10 +12,9 @@ function startApp() {
 	var oAuth = liquid.helper.oauth;
 	
     if (oAuth.isAuthorized()) {
-    	console.log("oauth token already there.");
-        alert("oauth there");
+    	console.error("oauth token there.");
     } else {
-        alert("oauth not there");
+        console.error("oauth not there");
         liquid.helper.oauth.authorize(authorizeWindowChange);
         event.preventDefault();
     }
