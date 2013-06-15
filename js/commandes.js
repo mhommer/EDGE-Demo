@@ -47,7 +47,7 @@
 	}
 	
 	function findMyEvents() {	
-		$.getJSON("https://www.googleapis.com/fusiontables/v1/query?key=AIzaSyBE9qhxQaFUxLpRsKl55RZ3GDPM60eXoDo&sql=SELECT%20*%20from%201wCIJey8aemcoqYleNws0AHOBLWGYCQqpKI8XKUA&typed=true",
+		$.getJSON("https://www.googleapis.com/fusiontables/v1/query?key=AIzaSyBE9qhxQaFUxLpRsKl55RZ3GDPM60eXoDo&sql=SELECT%20*%20from%201ir_IZ0sBCLkCM5HxrJm3rRPWMSF09wNwnNb0YEM&typed=true",
 		function (data) {
 			var emptyJoinedEvents = true;
 			var emptyMineEvents = true;
@@ -72,15 +72,15 @@
 	}
 	
 	function joinEvent(eventId, userId) {	
-		$.getJSON("https://www.googleapis.com/fusiontables/v1/query?key=AIzaSyBE9qhxQaFUxLpRsKl55RZ3GDPM60eXoDo&sql=SELECT%20*%20from%201wCIJey8aemcoqYleNws0AHOBLWGYCQqpKI8XKUA WHERE id="+eventId+"&typed=true",
+		$.getJSON("https://www.googleapis.com/fusiontables/v1/query?key=AIzaSyBE9qhxQaFUxLpRsKl55RZ3GDPM60eXoDo&sql=SELECT%20*%20from%201ir_IZ0sBCLkCM5HxrJm3rRPWMSF09wNwnNb0YEM WHERE what="+eventId+"&typed=true",
 		function (data) {
 			var currentJoinedUsers = data.rows[0][4]+"|"+userId;
-			$.getJSON("https://www.googleapis.com/fusiontables/v1/query?key=AIzaSyBE9qhxQaFUxLpRsKl55RZ3GDPM60eXoDo&sql=UPDATE%201wCIJey8aemcoqYleNws0AHOBLWGYCQqpKI8XKUA SET joined="+currentJoinedUsers+" WHERE id="+eventId+"&typed=true");
+			$.getJSON("https://www.googleapis.com/fusiontables/v1/query?key=AIzaSyBE9qhxQaFUxLpRsKl55RZ3GDPM60eXoDo&sql=UPDATE%201ir_IZ0sBCLkCM5HxrJm3rRPWMSF09wNwnNb0YEM SET joined="+currentJoinedUsers+" WHERE what="+eventId+"&typed=true");
 		});
 	}
 	
 	function displayEvents() {	
-		$.getJSON("https://www.googleapis.com/fusiontables/v1/query?key=AIzaSyBE9qhxQaFUxLpRsKl55RZ3GDPM60eXoDo&sql=SELECT%20*%20from%201wCIJey8aemcoqYleNws0AHOBLWGYCQqpKI8XKUA&typed=true",
+		$.getJSON("https://www.googleapis.com/fusiontables/v1/query?key=AIzaSyBE9qhxQaFUxLpRsKl55RZ3GDPM60eXoDo&sql=SELECT%20*%20from%201ir_IZ0sBCLkCM5HxrJm3rRPWMSF09wNwnNb0YEM&typed=true",
 		function (data) {	
 			var item = "";
 			for(var i = 0; i < data.rows.length; i++) {
@@ -95,15 +95,15 @@
 	
 	function PopulateEvent(eventParameterID) {	
 	$('.event_detail').empty();
-		var json = "https://www.googleapis.com/fusiontables/v1/query?key=AIzaSyBE9qhxQaFUxLpRsKl55RZ3GDPM60eXoDo&sql=SELECT%20*%20from%201wCIJey8aemcoqYleNws0AHOBLWGYCQqpKI8XKUA WHERE id="+eventParameterID+"&typed=true";
+		var json = "https://www.googleapis.com/fusiontables/v1/query?key=AIzaSyBE9qhxQaFUxLpRsKl55RZ3GDPM60eXoDo&sql=SELECT%20*%20from%201ir_IZ0sBCLkCM5HxrJm3rRPWMSF09wNwnNb0YEM WHERE what="+eventParameterID+"&typed=true";
 		$.getJSON(json, function (data) {	
 			var item = "";
 			for(var i = 0; i < data.rows.length; i++) {
-				$('.event_detail').append('<p class="stitched_title"><span>' + data.rows[i][1] + '</span></p>');
-				$('.event_detail').append('<p><span class="ui-link" style="padding-top:10px;padding-left:40px;color:#A81BE0; font-weight:bold">Location: </span>' + data.rows[i][2] + '</p>');
-				$('.event_detail').append('<p><span class="ui-link" style="padding-top:10px;padding-left:40px;color:#A81BE0; font-weight:bold">Date: </span>' + data.rows[i][3] + '</p>');
+				$('.event_detail').append('<p class="stitched_title"><span>' + data.rows[i][0] + '</span></p>');
+				$('.event_detail').append('<p><span class="ui-link" style="padding-top:10px;padding-left:40px;color:#A81BE0; font-weight:bold">Location: </span>' + data.rows[i][1] + '</p>');
+				$('.event_detail').append('<p><span class="ui-link" style="padding-top:10px;padding-left:40px;color:#A81BE0; font-weight:bold">Date: </span>' + data.rows[i][2] + '</p>');
 				$('.event_detail').append('<p><span class="ui-link" style="padding-top:10px;padding-left:40px;color:#A81BE0; font-weight:bold">Joined: </span></p>');
-				$('.event_detail').append(buildWhoJoined(data.rows[i][4]));
+				$('.event_detail').append(buildWhoJoined(data.rows[i][3]));
 				
 				if(me!=null && me!=""){
 					$('.add_join_button').empty().append('<form id="joiningEvent"><div data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-icon="" data-iconpos="" data-theme="c" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-up-c" aria-disabled="false"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Join Event</span></span><input class="ui-btn-hidden" type="button" name="eventToJoin" onClick="javascript:joinEvent('+eventParameterID+','+me+')" value="Join Event"></div></form>'); 
@@ -131,9 +131,9 @@
 	
 	function displayUser(userID) {	
 		var item = "";
-		var json = "https://www.googleapis.com/fusiontables/v1/query?key=AIzaSyBE9qhxQaFUxLpRsKl55RZ3GDPM60eXoDo&sql=SELECT%20*%20from%201E7zxhrFUQhqJA0AKdAxn2BTQ-xlUj7EBYasLw4o WHERE id="+userID+"&typed=true";
+		var json = "https://www.googleapis.com/fusiontables/v1/query?key=AIzaSyBE9qhxQaFUxLpRsKl55RZ3GDPM60eXoDo&sql=SELECT%20*%20from%201gfLO_zBIjASkgSrbII5weJwERVvFcSoNwe2Hk2w WHERE id="+userID+"&typed=true";
 	    $.getJSON(json, function(data) {	
-			$('.event_detail').append('<p><span style="font-size: 12px; padding:50px;">' + data.rows[0][1] + ' ' +data.rows[0][2]+ '</span></p>');
+			$('.event_detail').append('<p><span style="font-size: 12px; padding:50px;"><a href="email:' + data.rows[0][3] + '">' + data.rows[0][1] + ' ' +data.rows[0][2]+ '</a></span></p>');
 		});
 	}
 
@@ -141,7 +141,7 @@
 		var username =  $('input[id=formUsername]').val();
 		if(username!=null && username!=""){
 		meName = username;
-		var json = "https://www.googleapis.com/fusiontables/v1/query?key=AIzaSyBE9qhxQaFUxLpRsKl55RZ3GDPM60eXoDo&sql=SELECT%20*%20from%201E7zxhrFUQhqJA0AKdAxn2BTQ-xlUj7EBYasLw4o WHERE username='"+username+"'&typed=false";
+		var json = "https://www.googleapis.com/fusiontables/v1/query?key=AIzaSyBE9qhxQaFUxLpRsKl55RZ3GDPM60eXoDo&sql=SELECT%20*%20from%201gfLO_zBIjASkgSrbII5weJwERVvFcSoNwe2Hk2w WHERE id='"+username+"'&typed=false";
 	    $.getJSON(json, function(data) {
 			if(data!=null && data.rows!=undefined){
 			$('.username_li').empty().append(data.rows[0][1]+', Please refine your profile');
@@ -160,15 +160,15 @@
 	}
 	function PopulateNewEvent(eventParameterID, me) {	
 		$('.thank_you_event').empty().append('');
-		var json = "https://www.googleapis.com/fusiontables/v1/query?key=AIzaSyBE9qhxQaFUxLpRsKl55RZ3GDPM60eXoDo&sql=SELECT%20*%20from%201wCIJey8aemcoqYleNws0AHOBLWGYCQqpKI8XKUA WHERE id="+eventParameterID+"&typed=true";
+		var json = "https://www.googleapis.com/fusiontables/v1/query?key=AIzaSyBE9qhxQaFUxLpRsKl55RZ3GDPM60eXoDo&sql=SELECT%20*%20from%201ir_IZ0sBCLkCM5HxrJm3rRPWMSF09wNwnNb0YEM WHERE what="+eventParameterID+"&typed=true";
 		$.getJSON(json, function (data) {	
 			if(data.rows!=undefined){
 				for(var i = 0; i < data.rows.length; i++) {
-					$('.thank_you_event').append('<p style="font-size: 24px;"><span>' + data.rows[i][1] + '</span></p>');
-					$('.thank_you_event').append('<p><span class="ui-link" style="padding-top:10px;padding-left:40px;color:#A81BE0; font-weight:bold">Location: </span>' + data.rows[i][2] + '</p>');
-					$('.thank_you_event').append('<p><span class="ui-link" style="padding-top:10px;padding-left:40px;color:#A81BE0; font-weight:bold">Date: </span>' + data.rows[i][3] + '</p>');
+					$('.thank_you_event').append('<p style="font-size: 24px;"><span>' + data.rows[i][0] + '</span></p>');
+					$('.thank_you_event').append('<p><span class="ui-link" style="padding-top:10px;padding-left:40px;color:#A81BE0; font-weight:bold">Location: </span>' + data.rows[i][1] + '</p>');
+					$('.thank_you_event').append('<p><span class="ui-link" style="padding-top:10px;padding-left:40px;color:#A81BE0; font-weight:bold">Date: </span>' + data.rows[i][2] + '</p>');
 					$('.thank_you_event').append('<p><span class="ui-link" style="padding-top:10px;padding-left:40px;color:#A81BE0; font-weight:bold">Joined: </span></p>');
-					$('.thank_you_event').append(buildWhoJoined(data.rows[i][4]));			
+					$('.thank_you_event').append(buildWhoJoined(data.rows[i][3]));			
 				}
 			} else {
 				$('.thank_you_event').append('<p><span class="ui-link" style="padding-top:10px;padding-left:40px;color:#A81BE0; font-weight:bold">No event has been registered</span></p>');
