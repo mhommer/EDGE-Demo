@@ -1,0 +1,151 @@
+body {
+        font-family:arial;
+        font-size:12px;    
+    }
+    
+    a {
+        color:#A81BE0;
+        text-decoration:none;
+        display:block;
+    }
+    a:hover {
+        color:#888;
+        text-decoration:none;
+    }
+    
+	.event_title{
+	font-size: 24px;
+	}
+    #events_tab {
+        /* hide overlength child elements*/
+        overflow:hidden;
+        
+        /* all the child elements are refering to this width */
+        width:450px;
+        /* fix ie 6 overflow bug */
+        position:relative
+        
+        /* styling */
+        border:1px solid #ccc;    
+        margin:0 auto;
+    }
+    
+	#events_tab .tabs {
+		/* enable absolute position for .wrapper */
+		position:relative;    
+		height:30px;
+		
+		/* styling */
+		padding-top:5px;
+		cursor:default;
+	}
+
+	#events_tab .panel li {
+	font-color:#A81BE0;	
+	}
+
+	#events_tab .tabs .item {
+		/* enable z-index */
+		position:relative;
+		z-index:10;
+	
+		/* display in one row */
+		float:left;
+		display:block;
+		/* width = half size of #events_tab */
+		width:150px;
+		
+		/* height = height of .tabs */
+		text-align:center;
+		font-size:14px;
+		font-weight:700;    
+	}
+	#events_tab .tabs .wrapper {
+		/* Set it to absolute */
+		position:absolute;
+		top:0; left:0;
+		
+		/* display the wrapper in bottom most layer */
+		z-index:0;        
+			
+		/* width = half size of #events_tab */
+		width:140px;
+		/* height = height of .tabs */
+		height:25px;
+		
+		/* styling */
+		/*background:#abe3eb;*/
+		background:#ffffff;
+		top: -5px;
+		
+	}
+	
+	#events_tab .content {
+		/* enable absolute position for .panel */    
+		position:relative;
+		overflow:hidden;
+		
+		/* styling */
+		/* background:#abe3eb;*/
+		/*border-top:1px solid #d9fafa;*/
+		/*background:#ffffff;*/
+	}
+	
+	#events_tab .panel {
+		/* width is width of #events_tab times 2 */
+		position:relative;
+		width:1350px;
+		
+	}
+	
+	#events_tab .panel ul {
+		/* display in one row */
+		float:left;
+		
+		/* width is the same with #events_tab */
+		width:450px;
+		
+		/* remove all styles */
+		padding:0;
+		margin:0;
+		list-style:none;
+		
+	}
+
+	#events_tab .panel ul li {
+		padding:5px 0 5px 10px;    
+		border-bottom:1px dotted #fff;
+		border-bottom:1px solid #A81BE0;
+	}
+	.stitched_title {
+		text-align:center;
+		color: #FFFFFF;
+		font-size: 40px;
+		padding: 5px 10px 5px 10px;
+		margin: 15px;
+		background: #A81BE0;
+		border: 2px dashed rgba(255,255,255,0.4);
+		-moz-border-radius: 6px;
+		-webkit-border-radius: 6px;
+		border-radius: 6px;
+		-moz-box-shadow: 0 0 0 4px #A81BE0, 2px 1px 4px 4px rgba(10,10,0,.5);
+		-webkit-box-shadow: 0 0 0 4px #A81BE0, 2px 1px 4px 4px rgba(10,10,0,.5);
+		box-shadow: 0 0 0 4px #A81BE0, 2px 1px 6px 4px rgba(10,10,0,.5);
+	}
+
+	.ui-body-c .ui-link {
+		color: #A81BE0;
+	}	
+	.ui-body-c .ui-link:hover {
+		color: #A81BE0;
+	}
+	
+	.ui-body-c .ui-link:visited {
+		color: #A81BE0;
+	}	
+	#horizontal-list li {
+	display: inline;
+	list-style-type: none;
+	padding-right: 20px;
+	vertical-align: top;
+}
