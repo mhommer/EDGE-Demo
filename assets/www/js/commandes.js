@@ -204,3 +204,8 @@
 	function gotoMain(){
 		window.location = 'index.html#main';
 	}
+
+
+	function gotoProfile(){
+		window.location = 'index.html#profile';
+	}
