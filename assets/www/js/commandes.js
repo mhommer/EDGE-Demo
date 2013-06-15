@@ -87,7 +87,6 @@
 	}
 	
 	function joinEvent(eventID) {	
-		console.error("join event");// with: " + what + where + when + userId);
 		liquid.helper.oauth.getAccessToken(function(tokenObj) {
        	 	var token = tokenObj.access_token;
 			var evt = events[eventID];
@@ -262,6 +261,36 @@
 		});
 	}
 
+	function createNewEvent() {
+		var what =  $('input[id=eventTitle]').val();
+		var where =  $('input[id=eventLocation]').val();
+		var when =  "1371396054";//$('input[id=eventDate]').val();
+
+		if(what!=null && what!="" && where!=null && where!="" && when!=null && when!=""){
+
+			liquid.helper.oauth.getAccessToken(function(tokenObj) {
+	       	 	var token = tokenObj.access_token;
+				
+	    		var json = "https://www.googleapis.com/fusiontables/v1/query?access_token="+token+"&sql=INSERT%20INTO%201ir_IZ0sBCLkCM5HxrJm3rRPWMSF09wNwnNb0YEM%20(what, loc, timestamp, attendees, creator) VALUES ('"+what+"','"+where+"','"+when+"','"+me+"','"+me+"')";
+				console.error("url:" + json);
+
+				$.ajax({
+					  type: "POST",
+					  url: json,
+					  data: {  }
+					}).done(function() {
+					  	console.error("success writing event");
+					  	gotoSuccessScreen();
+					}).fail(function() {
+	  					console.error("writing event failed");
+	  					alert("Sorry, your event could not be created :'(");
+	  				});
+			});
+		} else {
+			alert("Please fill out all fields.");
+		}
+	}
+
 	function PopulateEvent(eventParameterID) {	
 
 	$('.event_detail').empty();
@@ -339,6 +368,10 @@
 	function gotoMainWithRefresh(){
 		window.location = 'index.html#main';
 		displayEvents();
+	}
+
+	function gotoSuccessScreen(){
+		window.location = 'index.html#thanksEvent';
 	}
 
 	function gotoProfile(){
