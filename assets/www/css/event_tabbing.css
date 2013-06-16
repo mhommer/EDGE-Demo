@@ -53,7 +53,7 @@ body {
 		float:left;
 		display:block;
 		/* width = half size of #events_tab */
-		width:150px;
+		width:75px;
 		
 		/* height = height of .tabs */
 		text-align:center;
@@ -69,7 +69,7 @@ body {
 		z-index:0;        
 			
 		/* width = half size of #events_tab */
-		width:140px;
+		width:70px;
 		/* height = height of .tabs */
 		height:25px;
 		
@@ -94,7 +94,7 @@ body {
 	#events_tab .panel {
 		/* width is width of #events_tab times 2 */
 		position:relative;
-		width:1350px;
+		width:675px;
 		
 	}
 	
@@ -103,7 +103,7 @@ body {
 		float:left;
 		
 		/* width is the same with #events_tab */
-		width:450px;
+		width:225px;
 		
 		/* remove all styles */
 		padding:0;
@@ -120,7 +120,7 @@ body {
 	.stitched_title {
 		text-align:center;
 		color: #FFFFFF;
-		font-size: 30px;
+		font-size: 25px;
 		padding: 5px 10px 5px 10px;
 		margin: 15px;
 		background: #A81BE0;
@@ -142,13 +142,4 @@ body {
 	
 	.ui-body-c .ui-link:visited {
 		color: #A81BE0;
-	}	
-	#horizontal-list li {
-	display: inline;
-	list-style-type: none;
-	padding-right: 20px;
-	vertical-align: top;
-}
-.centered {
-	text-align: center;
-}
+	}

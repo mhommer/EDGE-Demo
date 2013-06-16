@@ -33,7 +33,7 @@ function authorizeWindowChange(uriLocation) {
         oAuth.saveRefreshToken({ 
         	  	auth_code: oAuth.authCode
         	  }, function() {
-        		  startPageTaskList();
+        		 // startPageTaskList();
         	  });
         
     } 
