@@ -21,7 +21,7 @@ body {
         overflow:hidden;
         
         /* all the child elements are refering to this width */
-        width:450px;
+        width:225px;
         /* fix ie 6 overflow bug */
         position:relative
         
