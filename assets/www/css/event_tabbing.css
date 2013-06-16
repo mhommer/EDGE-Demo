@@ -149,3 +149,6 @@ body {
 	padding-right: 20px;
 	vertical-align: top;
 }
+.centered {
+	text-align: center;
+}
