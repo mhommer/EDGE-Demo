@@ -20,14 +20,14 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         id        = "io.cordova.helloCordova"
         version   = "2.0.0">
-    <name>Hello Cordova</name>
+    <name>Buzzlight</name>
 
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        Buzzlight
     </description>
 
-    <author href="http://cordova.io" email="dev@cordova.apache.org">
-        Apache Cordova Team
+    <author href="http://netlight.com" email="martin.hommer@netlight.com">
+        Netlight GmbH
     </author>
 
     <access origin="*"/>
