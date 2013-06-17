@@ -31,20 +31,23 @@
 	}*/
 
 	function getDateString(timestamp){
-		var eventDatetime = timestamp;
-		if(eventDatetime == "undefined" || eventDatetime == null || eventDatetime == ""){
+		if(timestamp.length<13){
+			timestamp = timestamp+"000";
+		}
+		timestamp = parseInt(timestamp);
+		alert(timestamp);
+		if(timestamp == "undefined" || timestamp == null || timestamp == ""){
 			return "";
 		}
-		var eventDate = new Date(parseInt(eventDatetime));
-		
+		var eventDate = new Date(timestamp);
+
 		var eventMonth = eventDate.getMonth();
 		var eventYear = eventDate.getFullYear();
 		var eventDay = eventDate.getDate();
 		var eventHours = eventDate.getHours();
 		var eventMinutes = eventDate.getMinutes();
-		
-		eventDate = eventYear+"/"+eventMonth+"/"+eventDay+" "+eventHours+":"+eventMinutes;
-		
+		var eventSeconds = eventDate.getSeconds();
+		eventDate = eventDay+"/"+eventMonth+"/"+eventYear+" "+eventHours+":"+eventMinutes;
 		return eventDate;
 	}
 
@@ -304,12 +307,12 @@
 
 	function createDateAsTimestamp(eventDate){
 		if(eventDate == "undefined" || eventDate==""){
-			alert("Please enter a valid date in this format: 06/26/2013 18:30");
+			alert("Please enter a valid date in this format: 26/06/2013 18:30");
 			return false;
 		}	
 		eventDateSplit = eventDate.split(" ");
 		if(eventDateSplit.length<2){
-			alert("Please enter a valid date in this format: 06/26/2013 18:30");
+			alert("Please enter a valid date in this format: 26/06/2013 18:30");
 			return false;
 		}
 		var eventTime = eventDateSplit[1].split(":");
@@ -322,8 +325,22 @@
 			alert("Please enter a valid time in this format: 18:30");
 			return false;
 		}
-		eventDate = eventDate.trim();
-		var timestamp = Date.parse(eventDate);
+		eventDateSplit = eventDateSplit[0].split("/");
+		var eventMonth = eventDateSplit[1];
+		var eventYear = eventDateSplit[2];
+		var eventDay = eventDateSplit[0];
+		var eventHours = eventTime[0];
+		var eventMinutes = eventTime[1];
+
+		eventDate = new Date();
+		eventDate.setMonth(eventMonth);
+		eventDate.setDate(eventDay);
+		eventDate.setFullYear(eventYear);
+		eventDate.setHours(eventHours);
+		eventDate.setMinutes(eventMinutes);
+		eventDate.setSeconds(0);
+
+		var timestamp = eventDate.getTime();
 		return timestamp;
 	}
 	function PopulateEvent(eventParameterID) {	
