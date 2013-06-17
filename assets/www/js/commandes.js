@@ -320,7 +320,7 @@
 			alert("Please enter a valid time in this format: 18:30");
 			return false;
 		}
-		eventDate = eventDate.trim()+":00";
+		eventDate = eventDate.trim();
 		var timestamp = Date.parse(eventDate);
 		return timestamp;
 	}
