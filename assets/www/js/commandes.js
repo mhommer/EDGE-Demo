@@ -146,7 +146,9 @@
 			
 		    $.getJSON(json).done(function( data ) {
 		    	console.error("success");
-
+				$('.all_events').empty();
+				$('.my_events').empty();
+				$('.joined_events').empty();
 		    	events = data.rows;
 
 				var item = "";
@@ -399,8 +401,8 @@
 	}
 
 	function gotoMainWithRefresh(){
+	    displayEvents();
 		window.location = 'index.html#main';
-		displayEvents();
 	}
 
 	function gotoSuccessScreen(){
