@@ -33,7 +33,7 @@
 	function getDateString(timestamp){
 		timestamp = timestamp+"000";
 		timestamp = parseInt(timestamp);
-		alert(timestamp);
+		
 		if(timestamp == "undefined" || timestamp == null || timestamp == ""){
 			return "";
 		}
