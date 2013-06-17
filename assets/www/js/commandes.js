@@ -152,7 +152,7 @@
 				var item = "";
 				for(var i = 0; i < data.rows.length; i++) {
 					var urlEvent = "javascript:PopulateEvent("+i+")";
-					item += '<li class="wrapper ui-btn ui-shadow ui-btn-corner-all ui-btn-up-c" ><a href='+urlEvent+'>' + data.rows[i][0] + '</a><span>'+data.rows[i][1]+'</span> - <span>'+data.rows[i][2]+'</span></li>';
+					item += '<li class="wrapper ui-btn ui-shadow ui-btn-corner-all ui-btn-up-c" ><a href='+urlEvent+'>' + data.rows[i][0] + '</a><span>'+data.rows[i][1]+'</span> - <span>'+getDateString(data.rows[i][2])+'</span></li>';
 					var itemID = i;
 				}
 				findMyEvents(data);
