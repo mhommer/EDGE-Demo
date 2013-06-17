@@ -31,9 +31,7 @@
 	}*/
 
 	function getDateString(timestamp){
-		if(timestamp.length<13){
-			timestamp = timestamp+"000";
-		}
+		timestamp = timestamp+"000";
 		timestamp = parseInt(timestamp);
 		alert(timestamp);
 		if(timestamp == "undefined" || timestamp == null || timestamp == ""){
@@ -341,7 +339,7 @@
 		eventDate.setSeconds(0);
 
 		var timestamp = eventDate.getTime();
-		return timestamp;
+		return timestamp.toString().substr(0,10);
 	}
 	function PopulateEvent(eventParameterID) {	
 
