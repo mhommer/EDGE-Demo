@@ -31,10 +31,21 @@
 	}*/
 
 	function getDateString(timestamp){
-
-		//var date = new Date(timestamp)
-		//var datestring = date.toString();//""+date.getMonth()+"/"+date.getDate()+"/"+date.getFullYear() + " at " + date.getHours()+"."+date.getMinutes();
-		return timestamp;
+		var eventDatetime = timestamp;
+		if(eventDatetime == "undefined" || eventDatetime == null || eventDatetime == ""){
+			return "";
+		}
+		var eventDate = new Date(parseInt(eventDatetime));
+		
+		var eventMonth = eventDate.getMonth();
+		var eventYear = eventDate.getFullYear();
+		var eventDay = eventDate.getDate();
+		var eventHours = eventDate.getHours();
+		var eventMinutes = eventDate.getMinutes();
+		
+		eventDate = eventYear+"/"+eventMonth+"/"+eventDay+" "+eventHours+":"+eventMinutes;
+		
+		return eventDate;
 	}
 
 	function addJoinedEvents(eventID, eventName, eventLocation, eventDate) {
@@ -262,7 +273,7 @@
 	function createNewEvent() {
 		var what =  $('input[id=eventTitle]').val();
 		var where =  $('input[id=eventLocation]').val();
-		var when =  "1371396054";//$('input[id=eventDate]').val();
+		var when =  createDateAsTimestamp($('input[id=eventDate]').val());
 
 		if(what!=null && what!="" && where!=null && where!="" && when!=null && when!=""){
 
@@ -289,6 +300,30 @@
 		}
 	}
 
+	function createDateAsTimestamp(eventDate){
+		if(eventDate == "undefined" || eventDate==""){
+			alert("Please enter a valid date in this format: 06/26/2013 18:30");
+			return false;
+		}	
+		eventDateSplit = eventDate.split(" ");
+		if(eventDateSplit.length<2){
+			alert("Please enter a valid date in this format: 06/26/2013 18:30");
+			return false;
+		}
+		var eventTime = eventDateSplit[1].split(":");
+		if(eventTime.length<2){
+			alert("Please enter a valid time in this format: 18:30");
+			return false;
+		}
+		var eventTime = eventDateSplit[1].split(":");
+		if(eventTime.length<2){
+			alert("Please enter a valid time in this format: 18:30");
+			return false;
+		}
+		eventDate = eventDate.trim()+":00";
+		var timestamp = Date.parse(eventDate);
+		return timestamp;
+	}
 	function PopulateEvent(eventParameterID) {	
 
 	$('.event_detail').empty();
